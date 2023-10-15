@@ -9,6 +9,4 @@
     echo $customer1->__toString();
 
     echo "</br>".$book1->getCopy();
-
-
 ?>

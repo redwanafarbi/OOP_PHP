@@ -38,12 +38,30 @@ class Books{
     }
 
     public function __toString(){
-        $result = <i> . $this->title . '</i> - ' . $this->author ;
+        $bookDetails= 
+        "</br>ISBN: ".$this->isbn."</br>".
+        "Title: ".$this->title."</br>".
+        "Author: ".$this->author."</br>".
+        "Available: ".$this->available;
 
-        if($this->available < 1){
-            $result .= '<b>Not Available Right Now</b>'
+        return $bookDetails ;
+    }
+
+    public function __call($method, $value){
+        return "Invalid Method";
+    }
+
+    public function __get($var_name){
+        if(property_exists(__CLASS__, $var_name)){
+            return $this->{$var_name};
         }
+        return "\nInvalid Method";
+    }
 
-        return $result ;
+    public function __set($var_name, $value){
+        if(property_exists(__CLASS__, $var_name)){
+            $this->{$var_name} = $value;
+        }
+        return "\nInvalid Method";
     }
 }

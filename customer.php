@@ -40,4 +40,23 @@ class Customers{
 
         return $customerDetails ;
     }
+
+    public function __call($method, $value){
+        return "Invalid Method";
+    }
+
+    public function __get($var_name){
+        if(property_exists(__CLASS__, $var_name)){
+            return $this->{$var_name};
+        }
+        return "\nInvalid Method";
+    }
+
+
+    public function __set($var_name, $value){
+        if(property_exists(__CLASS__, $var_name)){
+            $this->{$var_name} = $value;
+        }
+        return "\nInvalid Method";
+    }
 }
